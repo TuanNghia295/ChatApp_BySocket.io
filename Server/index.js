@@ -14,7 +14,8 @@ const socketIo = require("socket.io")(server, {
 
 // lắng nghe socket khi có connect từ client tới
 socketIo.on("connection", (socket) => {
-  console.log("New client connected");
+  console.log("New   client connected" + socket.id);
+  socket.emit("getId", socket.id);
   // lắng nghe sự kiện sendFromClient từ client
   socket.on("sendFromClient", (data) => {
     console.log("Data from client: ", data);
